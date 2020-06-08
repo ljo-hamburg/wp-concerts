@@ -1,0 +1,45 @@
+<?php
+/**
+ * Plugin Name: Wp Concerts
+ * Plugin URI: <%= data.homepage %>
+ * Description: LJO Concerts for WordPress.
+ * Author: <%= composer.authors[0].name %>
+ * Author URI: <%= composer.authors[0].homepage %>
+ * Version: <%= data.version %>
+ * Text Domain: wp-concerts
+ * Domain Path: /languages
+ * License: GNU General Public License version 3.0
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * @package LJO\WPConcerts
+ */
+
+declare(strict_types=1);
+
+namespace LJO\WPConcerts;
+
+if ( ! defined( 'WPINC' ) ) {
+    die;
+}
+
+define( 'WP_CONCERTS_VERSION', '<%= data.version %>' );
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+/**
+ * TODO: Documentation
+ * We do not directly pass PluginActivator::activate to the hook to avoid loading the
+ * class unless the hook is invoked.
+ */
+function activate_wp_concerts() {
+    PluginActivator::activate();
+}
+register_activation_hook(__FILE__, "activate_plugin");
+
+ConcertsPlugin::initialize(__FILE__, 'wp-concerts');
+// TODO: Enable update checker
+/*$update_checker = \Puc_v4_Factory::buildUpdateChecker(
+    '<%= data.homepage %>',
+    __FILE__
+);
+$update_checker->getVcsApi()->enableReleaseAssets();*/
