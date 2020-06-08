@@ -1,0 +1,134 @@
+$editor: false !default;
+
+@use "countdown";
+
+.wp-block-wp-concerts-featured-concert {
+  position: absolute;
+  left: 50%;
+  z-index: 10;
+  display: flex;
+  align-items: stretch;
+  width: 80%;
+  overflow: hidden;
+  color: #333;
+  font-size: 14px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.31);
+  transform: translate(-50%, -50px);
+
+  @media (max-width: 992px) {
+    flex-wrap: wrap;
+    padding: 20px 40px;
+  }
+
+  @media (max-width: 680px) {
+    margin-top: -25px;
+  }
+
+  @media (max-width: 660px) {
+    width: 96%;
+    padding: 20px;
+
+    .countdown {
+      margin-right: -20px;
+      margin-left: -20px;
+    }
+  }
+
+  .editor-styles-wrapper & {
+    position: unset;
+    width: 100%;
+    transform: none;
+  }
+
+  .date {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 45px 53px;
+    white-space: nowrap;
+    background-size: cover;
+
+    @media (max-width: 992px) {
+      flex-basis: 100%;
+      flex-direction: row;
+      justify-content: flex-start;
+      padding: 0;
+      color: #333;
+      background: none !important;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      background-color: #d8281b;
+      opacity: 0.3;
+      @media (max-width: 992px) {
+        display: none;
+      }
+    }
+
+    .day {
+      z-index: 1;
+      color: #fff;
+      font-weight: 800;
+      font-size: 26px;
+      line-height: 28px;
+      @media (max-width: 992px) {
+        margin-right: 5px;
+        color: #333;
+        font-size: 18px;
+      }
+    }
+
+    .month-year {
+      z-index: 1;
+      color: #f3f3f3;
+      font-weight: 600;
+      font-size: 13px;
+      @media (max-width: 992px) {
+        color: #333;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 30px;
+    @media (max-width: 992px) {
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-left: 0;
+    }
+  }
+
+  .title {
+    margin: 0;
+    color: #333;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    text-transform: uppercase;
+    @media (max-width: 992px) {
+      flex-basis: 100%;
+      text-align: left;
+    }
+    @media (max-width: 680px) {
+      margin-bottom: 10px;
+    }
+  }
+
+  .countdown {
+    display: flex;
+  }
+}
