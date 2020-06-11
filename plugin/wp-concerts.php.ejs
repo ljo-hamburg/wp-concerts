@@ -1,5 +1,7 @@
 <?php
 /**
+ * The WP Concerts plugin.
+ *
  * Plugin Name: Wp Concerts
  * Plugin URI: <%= data.homepage %>
  * Description: LJO Concerts for WordPress.
@@ -22,19 +24,22 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
+/**
+ * The current version of the WP Concerts plugin.
+ */
 define( 'WP_CONCERTS_VERSION', '<%= data.version %>' );
 
 require_once __DIR__ . '/vendor/autoload.php';
 
 /**
- * TODO: Documentation
- * We do not directly pass PluginActivator::activate to the hook to avoid loading the
- * class unless the hook is invoked.
+ * Plugin activation hook. Instead of passing PluginActivator::activate as the
+ * activation hook we create a custom function. This avoids loading the
+ * `PluginActivator` class unless it is actually needed.
  */
 function activate_wp_concerts() {
     PluginActivator::activate();
 }
-register_activation_hook(__FILE__, "activate_plugin");
+register_activation_hook(__FILE__, "\\LJO\\WPConcerts\\activate_wp_concerts");
 
 ConcertsPlugin::initialize(__FILE__, 'wp-concerts');
 // TODO: Enable update checker

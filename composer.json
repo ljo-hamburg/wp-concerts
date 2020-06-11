@@ -5,7 +5,10 @@
   "license": "GPL-3.0-or-later",
   "require": {
     "php": "^7.4",
-    "yahnis-elsts/plugin-update-checker": "^4.9"
+    "yahnis-elsts/plugin-update-checker": "^4.9",
+    "ext-intl": "*",
+    "ext-json": "*",
+    "jsvrcek/ics": "^0.7.0"
   },
   "require-dev": {
     "johnpbloch/wordpress": "^5.3",

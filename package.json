@@ -8,11 +8,11 @@
     "build": "NODE_ENV=production gulp",
     "build-dev": "NODE_ENV=development gulp",
     "lint": "npm run lint:php && npm run lint:js && npm run lint:scss",
-    "lint:php": "./vendor/bin/phpcs theme includes templates",
-    "lint:js": "eslint --no-error-on-unmatched-pattern scripts",
+    "lint:php": "./vendor/bin/phpcs plugin includes templates",
+    "lint:js": "eslint --no-error-on-unmatched-pattern scripts blocks",
     "lint:scss": "stylelint --allow-empty-input styles",
     "pregettext": "npm run build-dev",
-    "gettext": "./vendor/bin/wp --require=tasks/make-pot.php i18n make-twig-pot build languages/wp-concerts.pot",
+    "gettext": "./vendor/bin/wp i18n make-pot build languages/wp-concerts.pot",
     "postgettext": "for FILE in ./languages/*.po; do msgmerge --update $FILE languages/wp-concerts.pot; done"
   },
   "repository": {

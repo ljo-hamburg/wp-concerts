@@ -110,7 +110,7 @@ function buildStyles() {
     )
     .pipe(postcss([require("autoprefixer")]))
     .pipe(sourcemaps.write("."))
-    .pipe(dest(`${BUILD_DIR}/styles`));
+    .pipe(dest(BUILD_DIR));
 }
 
 /**

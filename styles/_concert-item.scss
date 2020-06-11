@@ -1,0 +1,194 @@
+@use "countdown";
+
+$breakpoint: 768px;
+$breakpoint-small: 576px;
+
+%concert-item-base {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+  overflow: hidden;
+  line-height: 1;
+  background-color: #fff;
+  border-radius: 3px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  .date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    color: #333;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+    text-transform: uppercase;
+    border-right: 1px solid #f9f9f9;
+
+    @media (max-width: $breakpoint) {
+      flex: 100%;
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: flex-start;
+      padding: 20px 20px 0;
+      border-right-width: 0;
+    }
+  }
+
+  .day {
+    color: #333;
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  @media (max-width: $breakpoint) {
+    .day {
+      font-size: 16px;
+      white-space: pre;
+
+      &::after {
+        content: " ";
+      }
+    }
+  }
+  
+
+  .summary {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    color: #333;
+
+    @media (max-width: $breakpoint) {
+      padding-top: 0;
+      padding-bottom: 10px;
+    }
+
+    @media(max-width: $breakpoint-small) {
+      flex: 100%;
+    }
+  }
+
+  .title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.2em;
+
+    @media (max-width: $breakpoint) {
+      font-size: 20px;
+    }
+  }
+
+  .subtitle {
+    color: #808080;
+    line-height: 1.4em;
+  }
+
+  .location,
+  .time {
+    display: flex;
+    align-items: center;
+
+    i.fa {
+      width: 14px;
+      margin-right: 8px;
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    strong::after {
+      content: "\00a0";
+    }
+  }
+
+  .location,
+  :not(.location) + .time {
+    margin-top: 16px;
+    line-height: 1em;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px 20px 20px;
+    color: #808080;
+    font-weight: 600;
+    text-transform: uppercase;
+    @media(max-width: $breakpoint-small) {
+      flex: 100%;
+      padding: 10px;
+    }
+  }
+
+  .countdown {
+    flex: 1;
+    min-width: 280px;
+    padding-right: 20px;
+    padding-left: 20px;
+    @media(max-width: $breakpoint-small) {
+      flex: 100%;
+      padding: 10px;
+    }
+
+    .label {
+      line-height: 1;
+    }
+
+    .amount {
+      margin-top: 0;
+      font-size: 22px;
+    }
+  }
+
+  .editor-styles-wrapper & {
+    pointer-events: none;
+
+    .countdown {
+      display: none;
+    }
+  }
+
+
+  &.over,
+  &.cancelled {
+    .date,
+    .day,
+    .title,
+    .location,
+    .time {
+      color: #808080;
+    }
+
+    .title {
+      text-decoration: line-through;
+    }
+  }
+
+  &:not(.cancelled):hover .title {
+    color: #d8281b;
+  }
+}
+
+.post-item.post-type-concert {
+  @extend %concert-item-base;
+}
+
+.wp-block-wp-concerts-next-concerts {
+  margin: 15px 0;
+}

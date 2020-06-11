@@ -1,3 +1,8 @@
+/**
+ * This script enables the countdown functionality on supported elements. The countdown
+ * is a simple timer that updates all .countdown elements every second. If no such
+ * elements exist, this script does nothing.
+ */
 (($) => {
   $(document).ready(() => {
     $(".countdown").each((index, countdown) => {
