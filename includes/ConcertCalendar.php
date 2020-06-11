@@ -15,6 +15,7 @@ use Jsvrcek\ICS\CalendarStream;
 use Jsvrcek\ICS\Model\Calendar;
 use Jsvrcek\ICS\Utility\Formatter;
 use Locale;
+use WP_Post;
 use WP_Query;
 
 /**
@@ -92,6 +93,26 @@ class ConcertCalendar {
 				die;
 			}
 		}
+	}
+
+	/**
+	 * Returns the URL for the calendar entry for the specified concert.
+	 *
+	 * @param int|WP_Post|null $id ID of a concert. If unspecified or not the ID of a
+	 *                             concert the URL to the full calendar will be
+	 *                             returned.
+	 *
+	 * @return string The URL to a single concert event or to the concert calendar.
+	 */
+	public static function ics_url( $id ): string {
+		if ( $id && ConcertPostType::SLUG === get_post_type( $id ) ) {
+			$url = get_the_permalink( $id );
+		} else {
+			$url = get_post_type_archive_link( ConcertPostType::SLUG );
+		}
+		$param = self::QUERY_PARAMETER;
+		$url  .= ( wp_parse_url( $url, PHP_URL_QUERY ) ? '&' : '?' ) . "$param=1";
+		return $url;
 	}
 
 	/**

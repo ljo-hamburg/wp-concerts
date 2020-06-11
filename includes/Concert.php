@@ -683,6 +683,15 @@ class Concert {
 	}
 
 	/**
+	 * Returns the URL to the ICS event for this concert.
+	 *
+	 * @return string The URL to the ICS for this concert.
+	 */
+	public function ics_url() {
+		return ConcertCalendar::ics_url( $this->id );
+	}
+
+	/**
 	 * Returns a `CalendarEvent` representing this concert.
 	 *
 	 * @return CalendarEvent An event representing this concert.
