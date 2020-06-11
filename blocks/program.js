@@ -17,7 +17,7 @@ function useConcertEnd() {
     return select("core/editor").getEditedPostAttribute("meta");
   }, []);
   const concertDate = meta["concert-date"];
-  const duration = meta["concert-duration"];
+  const duration = meta["concert-duration"] ?? 0;
 
   if (!concertDate || duration <= 0) {
     return null;

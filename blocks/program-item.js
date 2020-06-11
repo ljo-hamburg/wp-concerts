@@ -92,17 +92,19 @@ registerBlockType(BLOCK_NAME, {
       <div>
         <div className="composer">{composer}</div>
         <div className="detail">
-          <div className="piece">{piece}</div>
-          {url && (
-            <a
-              target="_blank"
-              className="link"
-              href={url}
-              rel="noopener noreferrer"
-            >
-              {__("About this piece", "wp-concerts")}
-            </a>
-          )}
+          <div className="piece">
+            {piece}
+            {url && (
+              <a
+                target="_blank"
+                className="link"
+                href={url}
+                rel="noopener noreferrer"
+              >
+                {__("About this piece", "wp-concerts")}
+              </a>
+            )}
+          </div>
         </div>
       </div>
     );

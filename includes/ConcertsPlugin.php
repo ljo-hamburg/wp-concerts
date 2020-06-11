@@ -182,7 +182,7 @@ class ConcertsPlugin {
 		load_plugin_textdomain(
 			'wp-concerts',
 			false,
-			dirname( plugin_basename( $this->get_file() ) ) . '/languages/'
+			dirname( plugin_basename( $this->file ) ) . '/languages/'
 		);
 	}
 

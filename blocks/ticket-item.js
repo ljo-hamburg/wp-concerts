@@ -82,9 +82,7 @@ registerBlockType(BLOCK_NAME, {
               className="amount"
               value={amount}
               allowedFormats={[]}
-              onChange={(amount) =>
-                setAttributes({ amount: amount.replace(" ", "\xc2\xa0") })
-              }
+              onChange={(amount) => setAttributes({ amount })}
               placeholder={__("$ Amount", "wp-concerts")}
             />
             {extra && (
