@@ -1,0 +1,79 @@
+name: Build
+on:
+  push:
+  release:
+    types: [published, edited]
+
+jobs:
+  build:
+    name: Build Plugin
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'release' || ! github.event.release.draft }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Gettext
+        run: sudo apt-get install -y gettext
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Fetch Latest Release
+        id: git
+        if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
+        run: |
+          TAG=$(curl -fsSL \
+                     "https://api.github.com/repos/$GITHUB_REPOSITORY/releases/latest" \
+                     --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+                | jq -r .tag_name)
+          git fetch --shallow-exclude "$TAG"
+          git fetch --deepen 1
+          echo "::set-output name=tag::$TAG"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set Version Number
+        id: version
+        run: |
+          PACKAGE=$(jq -r .version package.json)
+          SHA=$(echo $GITHUB_SHA | cut -b 1-8)
+          COMMITS=$(git rev-list $TAG..$GITHUB_SHA --count)
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            VERSION=$(npx semver -c $(git describe --tags))
+          elif [[ $GITHUB_REF == refs/heads/$DEFAULT_BRANCH ]] && [[ "$COMMITS" -gt "0" ]]; then
+            VERSION="$PACKAGE-$COMMITS+$SHA"
+          elif [[ $GITHUB_REF == refs/heads/* ]] && [[ "$COMMITS" -gt "0" ]]; then
+            VERSION="$PACKAGE-dev.$COMMITS+$SHA"
+          else
+            VERSION="$PACKAGE+$SHA"
+          fi
+          npm version $VERSION --no-git-tag-version --allow-same-version
+
+          echo "::set-output name=version::$VERSION"
+          echo "::set-output name=filename::wp-concerts-$VERSION.zip"
+        env:
+          TAG: ${{ steps.git.outputs.tag }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+      - name: Install dependencies
+        run: |
+          npm ci
+          composer install
+      - name: Build Theme
+        run: |
+          npm run build -- --dest=wp-concerts
+          zip -qr9 $FILENAME wp-concerts
+        env:
+          FILENAME: ${{ steps.version.outputs.filename }}
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ steps.version.outputs.filename }}
+          path: wp-concerts/
+      - name: Publish Release Assets
+        if: ${{ github.event_name == 'release' }}
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ${{ steps.version.outputs.filename }}
+          asset_name: ${{ steps.version.outputs.filename }}
+          asset_content_type: application/zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,33 @@
+name: Lint
+on: push
+
+jobs:
+  lint:
+    name: Lint Code Style
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - uses: xt0rted/stylelint-problem-matcher@v1
+      - name: Install Dependencies
+        run: |
+          npm ci
+          composer install --no-progress
+      - name: Get PHP Action
+        id: php
+        run: echo "::set-output name=phpcs::$(jq -r '.scripts["lint:php"]' package.json)"
+      - name: Run PHP_CodeSniffer
+        if: ${{ always() }}
+        uses: chekalsky/phpcs-action@v1
+        with:
+          phpcs_bin_path: ${{ steps.php.outputs.phpcs }}
+          enable_warnings: true
+      - name: Run ESLint
+        if: ${{ always() }}
+        run: npm run lint:js
+      - name: Run StyleLint
+        if: ${{ always() }}
+        run: npm run lint:scss
