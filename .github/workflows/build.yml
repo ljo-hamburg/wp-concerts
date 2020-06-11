@@ -26,7 +26,7 @@ jobs:
                      --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
                 | jq -r .tag_name)
           git fetch --shallow-exclude "$TAG"
-          git fetch --deepen 1
+          git fetch origin --deepen 1 +refs/tags/$TAG:refs/tags/$TAG
           echo "::set-output name=tag::$TAG"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
