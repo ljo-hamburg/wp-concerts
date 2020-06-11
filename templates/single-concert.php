@@ -28,6 +28,12 @@ echo '<script type="application/ld+json">';
 echo wp_json_encode( $this->get_schema_data() );
 echo '</script>';
 ?>
+	<?php if ( $concert->cancelled ) : ?>
+		<div class="cancelled">
+			<h2><?php esc_html_e( 'The concert was cancelled.', 'wp-concerts' ); ?></h2>
+			<div><?php echo esc_html( $concert->cancelled_message ); ?></div>
+		</div>
+	<?php endif ?>
 	<div class="concert-meta">
 		<div class="date">
 			<?php echo esc_html( $concert->date->format( 'l, j.n.Y' ) ); ?>
