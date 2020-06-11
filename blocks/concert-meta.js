@@ -38,11 +38,11 @@ registerPlugin("concert-sidebar", {
      * @returns {function} A function that when invoked with a value will set the meta
      *                     `key` to that value.
      */
-    function setMeta(key, value) {
+    function setMeta(key, value = undefined) {
       const setter = (value) => {
         editPost({ meta: { [key]: value } });
       };
-      if (typeof value === "undefined") {
+      if (typeof value !== "undefined") {
         setter(value);
       }
       return setter;
@@ -81,7 +81,9 @@ registerPlugin("concert-sidebar", {
               label={__("Duration", "wp-concerts")}
               help={__("The duration of the concert in minutes", "wp-concerts")}
               value={meta["concert-duration"]}
-              onChange={setMeta("concert-duration")}
+              onChange={(duration) =>
+                setMeta("concert-duration", parseInt(duration))
+              }
             />
           </PanelBody>
           <PanelBody title={__("Location", "wp-concerts")}>

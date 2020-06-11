@@ -124,15 +124,18 @@ registerBlockType(BLOCK_NAME, {
     return (
       <div>
         <div className="name-role">
-          <div className="name">
-            {url ? (
-              <a href={url} target="_blank" rel="noopener noreferrer">
-                {name}
-              </a>
-            ) : (
-              name
-            )}
-          </div>
+          {url ? (
+            <a
+              className="name"
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {name}
+            </a>
+          ) : (
+            <span className="name">{name}</span>
+          )}
           <div className="role">{role}</div>
         </div>
         {extra && <small className="extra">{extra}</small>}
