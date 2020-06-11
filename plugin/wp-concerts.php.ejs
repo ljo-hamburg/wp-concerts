@@ -42,9 +42,8 @@ function activate_wp_concerts() {
 register_activation_hook(__FILE__, "\\LJO\\WPConcerts\\activate_wp_concerts");
 
 ConcertsPlugin::initialize(__FILE__, 'wp-concerts');
-// TODO: Enable update checker
-/*$update_checker = \Puc_v4_Factory::buildUpdateChecker(
+$update_checker = \Puc_v4_Factory::buildUpdateChecker(
     '<%= data.homepage %>',
     __FILE__
 );
-$update_checker->getVcsApi()->enableReleaseAssets();*/
+$update_checker->getVcsApi()->enableReleaseAssets();
