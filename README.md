@@ -1,5 +1,8 @@
 # WP Concerts
 
+![Build](https://github.com/ljo-hamburg/wp-concerts/workflows/Build/badge.svg)
+![Lint](https://github.com/ljo-hamburg/wp-concerts/workflows/Lint/badge.svg)
+
 A WordPress plugin to support concerts. Used by the [LJO Hamburg](https://ljo-hamburg.de/).
 
 ## Installation
