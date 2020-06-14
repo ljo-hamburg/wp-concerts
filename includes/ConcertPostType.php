@@ -338,7 +338,7 @@ class ConcertPostType {
 	 * @param WP_Query $query The main query.
 	 */
 	public function sort_concerts( WP_Query $query ): void {
-		if ( is_post_type_archive( self::SLUG ) ) {
+		if ( $query->is_post_type_archive( self::SLUG ) ) {
 			$query->set( 'orderby', 'meta_value' );
 			$query->set( 'meta_key', self::DATE_META_KEY );
 			$query->set( 'order', 'ASC' );

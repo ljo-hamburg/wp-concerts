@@ -65,7 +65,7 @@ class ConcertCalendar {
 	 * @param WP_Query $query The main WP_Query instance.
 	 */
 	public function parse_query( WP_Query $query ): void {
-		if ( is_post_type_archive( ConcertPostType::SLUG ) ) {
+		if ( $query->is_post_type_archive( ConcertPostType::SLUG ) ) {
 			if ( boolval( $query->get( self::QUERY_PARAMETER, false ) ) ) {
 				$query->set( 'all', true );
 				$query->set( 'nopaging', true );
@@ -83,8 +83,7 @@ class ConcertCalendar {
 	 * mechanism.
 	 */
 	public function redirect_calendar(): void {
-		global $wp_query;
-		if ( boolval( $wp_query->get( self::QUERY_PARAMETER, false ) ) ) {
+		if ( boolval( get_query_var( self::QUERY_PARAMETER, false ) ) ) {
 			if ( is_post_type_archive( ConcertPostType::SLUG ) ) {
 				$this->print_all();
 				die;

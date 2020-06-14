@@ -515,7 +515,7 @@ class Concert {
 					<?php endif ?>
 					<?php if ( $this->location ) : ?>
 						<div class="location">
-							<i class="fa fa-map-marker"></i>
+							<i class="fa fa-map-marker-alt"></i>
 							<strong><?php echo esc_html( $this->location ); ?></strong>
 							<?php echo esc_html( $this->location_extra ); ?>
 						</div>

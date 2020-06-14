@@ -1,7 +1,7 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
 import { registerBlockType } from "@wordpress/blocks";
-import { PanelBody, TextControl } from "@wordpress/components";
+import { PanelBody, RangeControl } from "@wordpress/components";
 import { InspectorControls } from "@wordpress/block-editor";
 import ServerSideRender from "@wordpress/server-side-render";
 
@@ -27,14 +27,15 @@ registerBlockType(BLOCK_NAME, {
       <>
         <InspectorControls>
           <PanelBody>
-            <TextControl
+            <RangeControl
               label={__("Number of Concerts", "wp-concerts")}
               help={__(
                 "The number of upcoming concerts to be displayed",
                 "wp-concerts"
               )}
+              min={0}
               value={count}
-              onChange={(count) => setAttributes({ count: parseInt(count) })}
+              onChange={(count) => setAttributes({ count })}
             />
           </PanelBody>
         </InspectorControls>

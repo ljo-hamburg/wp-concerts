@@ -98,11 +98,13 @@ $breakpoint-small: 576px;
   .time {
     display: flex;
     align-items: center;
+    font-weight: 400;
+    line-height: 1.4;
 
     i.fa {
       width: 14px;
       margin-right: 8px;
-      font-size: 1.2em;
+      font-size: 90%;
       text-align: center;
     }
 
