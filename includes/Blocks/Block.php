@@ -76,17 +76,17 @@ class Block {
 		$dependencies = require dirname( dirname( __DIR__ ) ) . "/blocks/$this->name.asset.php";
 		wp_register_script(
 			$this->get_handle(),
-			plugin_dir_url( dirname( __DIR__ ) ) . "/blocks/$this->name.js",
+			plugins_url( "blocks/$this->name.js", dirname( __DIR__ ) ),
 			$dependencies['dependencies'],
 			$dependencies['version'],
 			true
 		);
-		$args['editor_script'] = $this->get_handle();
 		wp_set_script_translations(
 			$this->get_handle(),
 			'wp-concerts',
 			dirname( dirname( __DIR__ ) ) . '/languages'
 		);
+		$args['editor_script'] = $this->get_handle();
 		if ( $this->render ) {
 			$args['render_callback'] = array( $this, 'render' );
 		}

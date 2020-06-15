@@ -1,7 +1,12 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
 import { registerBlockType } from "@wordpress/blocks";
-import { PanelBody, Placeholder, TextControl } from "@wordpress/components";
+import {
+  PanelBody,
+  Placeholder,
+  Spinner,
+  TextControl,
+} from "@wordpress/components";
 import { InspectorControls } from "@wordpress/block-editor";
 import { useSelect } from "@wordpress/data";
 import ImageSelector from "@ljo-hamburg/gutenberg-image-selector";
@@ -109,16 +114,7 @@ registerBlockType(BLOCK_NAME, {
             )}
           />
         )}
-        {concertID && !concert && (
-          <Placeholder
-            icon="format-audio"
-            label={__("Concert not found", "wp-concerts")}
-            instructions={__(
-              "The concert you selected does not exist.",
-              "wp-concerts"
-            )}
-          />
-        )}
+        {concertID && !concert && <Spinner />}
         {concertID && concert && !date && (
           <Placeholder
             icon="format-audio"

@@ -142,18 +142,11 @@ function copyThemeFiles() {
 
 /**
  * Compiles the translations from the `languages` folder into `.mo` files and outputs
- * them into the `languages` folder of the build directory. The `wp-concerts-` prefix is
- * removed from the filename.
+ * them into the `languages` folder of the build directory.
  */
 function compileMoTranslations() {
   return src("./languages/*.po")
     .pipe(msgfmt())
-    .pipe(
-      rename((file) => {
-        file.basename = file.basename.replace(/^wp-concerts-/, "");
-        return file;
-      })
-    )
     .pipe(dest(`${BUILD_DIR}/languages`));
 }
 

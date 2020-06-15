@@ -184,7 +184,7 @@ class ConcertPostType {
 				'Screen reader text',
 				'wp-concerts'
 			),
-			'items_list'            => _x( 'Books list', 'Screen reader text', 'wp-concerts' ),
+			'items_list'            => _x( 'Concerts list', 'Screen reader text', 'wp-concerts' ),
 		);
 		$args   = array(
 			'labels'       => $labels,

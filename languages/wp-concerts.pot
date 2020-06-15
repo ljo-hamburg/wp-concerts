@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-06-11T15:58:20+00:00\n"
+"POT-Creation-Date: 2020-06-15T15:22:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: wp-concerts\n"
@@ -42,11 +42,11 @@ msgstr ""
 msgid "Finished"
 msgstr ""
 
-#: includes/Concert.php:711
+#: includes/Concert.php:720
 msgid "An internal error occurred when generating an event for a concert."
 msgstr ""
 
-#: includes/ConcertCalendar.php:155
+#: includes/ConcertCalendar.php:175
 msgid "Concerts"
 msgstr ""
 
@@ -129,7 +129,7 @@ msgstr ""
 
 #: includes/ConcertPostType.php:187
 msgctxt "Screen reader text"
-msgid "Books list"
+msgid "Concerts list"
 msgstr ""
 
 #: includes/ConcertPostType.php:191
@@ -174,8 +174,12 @@ msgstr ""
 msgid "Invalid concert date. This issue cannot be fixed automatically."
 msgstr ""
 
+#: single-concert.php:33
+msgid "The concert was cancelled."
+msgstr ""
+
 #. Translators: 1: Start Time, 2: End Time.
-#: single-concert.php:40
+#: single-concert.php:46
 msgid "%1$s – %2$s"
 msgstr ""
 
@@ -188,7 +192,7 @@ msgid "Entities participating in a concert."
 msgstr ""
 
 #: blocks/cast-member.js:180
-#: blocks/concert-meta.js:225
+#: blocks/concert-meta.js:229
 msgid "Homepage"
 msgstr ""
 
@@ -205,7 +209,7 @@ msgid "This is an ensemble"
 msgstr ""
 
 #: blocks/cast-member.js:220
-#: blocks/concert-meta.js:221
+#: blocks/concert-meta.js:225
 msgid "Name"
 msgstr ""
 
@@ -232,52 +236,52 @@ msgctxt "Editor sidebar title"
 msgid "Concert Data"
 msgstr ""
 
-#: blocks/concert-meta.js:196
+#: blocks/concert-meta.js:198
 msgid "Duration"
 msgstr ""
 
-#: blocks/concert-meta.js:197
+#: blocks/concert-meta.js:199
 msgid "The duration of the concert in minutes"
 msgstr ""
 
-#: blocks/concert-meta.js:201
-#: blocks/concert-meta.js:203
+#: blocks/concert-meta.js:205
+#: blocks/concert-meta.js:207
 msgid "Location"
 msgstr ""
 
-#: blocks/concert-meta.js:207
+#: blocks/concert-meta.js:211
 msgid "Location Extra"
 msgstr ""
 
-#: blocks/concert-meta.js:211
+#: blocks/concert-meta.js:215
 msgid "Address"
 msgstr ""
 
-#: blocks/concert-meta.js:215
+#: blocks/concert-meta.js:219
 msgid "Website"
 msgstr ""
 
-#: blocks/concert-meta.js:219
+#: blocks/concert-meta.js:223
 msgid "Organizer"
 msgstr ""
 
-#: blocks/concert-meta.js:229
+#: blocks/concert-meta.js:233
 msgid "Cancel"
 msgstr ""
 
-#: blocks/concert-meta.js:232
+#: blocks/concert-meta.js:236
 msgid "The concert is cancelled"
 msgstr ""
 
-#: blocks/concert-meta.js:233
+#: blocks/concert-meta.js:237
 msgid "Cancel the concert if it cannot take place as scheduled."
 msgstr ""
 
-#: blocks/concert-meta.js:237
+#: blocks/concert-meta.js:241
 msgid "Message"
 msgstr ""
 
-#: blocks/concert-meta.js:238
+#: blocks/concert-meta.js:242
 msgid "Why was the concert cancelled?"
 msgstr ""
 
@@ -318,18 +322,10 @@ msgid "Choose a featured concert by entering its ID in the inspector on the righ
 msgstr ""
 
 #: blocks/featured-concert.js:214
-msgid "Concert not found"
-msgstr ""
-
-#: blocks/featured-concert.js:215
-msgid "The concert you selected does not exist."
-msgstr ""
-
-#: blocks/featured-concert.js:218
 msgid "Missing date"
 msgstr ""
 
-#: blocks/featured-concert.js:219
+#: blocks/featured-concert.js:215
 msgid "The selected concert does not have a date associated with it. Only concerts with dates can be displayed."
 msgstr ""
 
@@ -374,36 +370,36 @@ msgstr ""
 msgid "Composer"
 msgstr ""
 
-#: blocks/program-item.js:198
-#: blocks/program-item.js:216
+#: blocks/program-item.js:199
+#: blocks/program-item.js:217
 msgid "About this piece"
 msgstr ""
 
-#: blocks/program.js:151
-#: blocks/program.js:192
-#: blocks/program.js:201
+#: blocks/program.js:153
+#: blocks/program.js:194
+#: blocks/program.js:203
 msgid "Program"
 msgstr ""
 
-#: blocks/program.js:152
+#: blocks/program.js:154
 msgid "Specify the concert schedule."
 msgstr ""
 
-#: blocks/program.js:153
+#: blocks/program.js:155
 msgid "Schedule"
 msgstr ""
 
-#: blocks/program.js:183
+#: blocks/program.js:185
 msgid "Show End Time"
 msgstr ""
 
-#: blocks/program.js:195
-#: blocks/program.js:201
+#: blocks/program.js:197
+#: blocks/program.js:203
 msgid "Concert End"
 msgstr ""
 
-#: blocks/program.js:195
-#: blocks/program.js:201
+#: blocks/program.js:197
+#: blocks/program.js:203
 msgid "Ca. %s"
 msgstr ""
 
@@ -445,7 +441,7 @@ msgstr ""
 
 #: blocks/tickets.js:140
 #: blocks/tickets.js:207
-#: blocks/tickets.js:238
+#: blocks/tickets.js:239
 msgid "Tickets"
 msgstr ""
 
@@ -459,19 +455,19 @@ msgstr ""
 
 #: blocks/tickets.js:179
 #: blocks/tickets.js:209
-#: blocks/tickets.js:240
+#: blocks/tickets.js:241
 msgid "Not available yet"
 msgstr ""
 
 #: blocks/tickets.js:182
 #: blocks/tickets.js:211
-#: blocks/tickets.js:242
+#: blocks/tickets.js:243
 msgid "Free Admission"
 msgstr ""
 
 #: blocks/tickets.js:185
 #: blocks/tickets.js:213
-#: blocks/tickets.js:244
+#: blocks/tickets.js:245
 msgid "Box office only"
 msgstr ""
 
@@ -491,7 +487,7 @@ msgstr ""
 msgid "Extra Information"
 msgstr ""
 
-#: blocks/tickets.js:231
-#: blocks/tickets.js:251
+#: blocks/tickets.js:232
+#: blocks/tickets.js:252
 msgid "Buy Tickets"
 msgstr ""
