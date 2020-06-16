@@ -37,7 +37,7 @@ jobs:
           SHA=$(echo $GITHUB_SHA | cut -b 1-8)
           COMMITS=$(git rev-list $TAG..$GITHUB_SHA --count)
           if [[ $GITHUB_REF == refs/tags/* ]]; then
-            VERSION=$(npx semver -c $(git describe --tags))
+            VERSION=$(npx semver $(git describe --tags))
           elif [[ $GITHUB_REF == refs/heads/$DEFAULT_BRANCH ]] && [[ "$COMMITS" -gt "0" ]]; then
             VERSION="$PACKAGE-$COMMITS+$SHA"
           elif [[ $GITHUB_REF == refs/heads/* ]] && [[ "$COMMITS" -gt "0" ]]; then
