@@ -65,6 +65,9 @@ class FeaturedConcertBlock extends Block {
 
 		ob_start(); ?>
 			<div class="wp-block-wp-concerts-featured-concert">
+				<?php echo '<script type="application/ld+json">'; ?>
+					<?php echo wp_json_encode( $concert->get_schema_data() ); ?>
+				<?php echo '</script>'; ?>
 				<div class="date" style="<?php echo esc_attr( $style ); ?>">
 					<div class="overlay"></div>
 					<span class="day">
