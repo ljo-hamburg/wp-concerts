@@ -437,7 +437,7 @@ class Concert {
 	 *
 	 * @return DateTime|null
 	 */
-	public function get_end(): ?DateTime {
+	public function end_date(): ?DateTime {
 		$duration = $this->duration;
 		if ( $duration > 0 ) {
 			$end = clone $this->date;
@@ -455,9 +455,9 @@ class Concert {
 	 * @return bool
 	 */
 	public function is_over(): bool {
-		$end = $this->get_end();
+		$end = $this->end_date();
 		if ( $end ) {
-			return strtotime( 'now' ) >= $this->get_end()->getTimestamp();
+			return strtotime( 'now' ) >= $this->end_date()->getTimestamp();
 		} else {
 			return strtotime( 'now' ) >= $this->date->getTimestamp();
 		}
@@ -493,7 +493,7 @@ class Concert {
 	 */
 	public function html( bool $include_schema_data = true, bool $display = true ): ?string {
 		$subtitle = apply_filters( 'wp_concerts/subtitle', null, $this );
-		$end      = $this->get_end();
+		$end      = $this->end_date();
 		ob_start(); ?>
 			<a href="<?php the_permalink( $this->id ); ?>" class="post post-item post-type-concert
 					<?php echo esc_attr( implode( ' ', $this->html_classes() ) ); ?>">
@@ -522,9 +522,9 @@ class Concert {
 					<?php endif ?>
 					<div class="time">
 						<i class="fa fa-clock-o"></i>
-						<?php echo esc_html( $this->date->format( 'H:m' ) ); ?>
+						<?php echo esc_html( $this->date->format( 'H:i' ) ); ?>
 						<?php if ( $end ) : ?>
-						– <?php echo esc_html( $end->format( 'H:m' ) ); ?>
+						– <?php echo esc_html( $end->format( 'H:i' ) ); ?>
 						<?php endif ?>
 					</div>
 				</div>
@@ -577,7 +577,7 @@ class Concert {
 		}
 
 		$start = $this->date;
-		$end   = $this->get_end();
+		$end   = $this->end_date();
 		if ( $start ) {
 			$data['startDate'] = $start->format( DATE_ISO8601 );
 			if ( $end ) {
@@ -710,7 +710,7 @@ class Concert {
 		if ( $this->cancelled ) {
 			$event->setStatus( 'CANCELLED' );
 		}
-		$end = $this->get_end();
+		$end = $this->end_date();
 		if ( $end ) {
 			try {
 				$event->setEnd( $end );

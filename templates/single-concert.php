@@ -45,7 +45,7 @@ echo '</script>';
 					// Translators: 1: Start Time, 2: End Time.
 					__( '%1$s – %2$s', 'wp-concerts' ),
 					$concert->date->format( 'H:i' ),
-					$concert->get_end()->format( 'H:i' )
+					$concert->end_date()->format( 'H:i' )
 				)
 			);
 			?>

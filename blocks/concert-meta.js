@@ -59,11 +59,15 @@ registerPlugin("concert-sidebar", {
         const norm = Math.floor(Math.abs(num));
         return (norm < 10 ? "0" : "") + norm;
       }
-      const tz = -new Date().getTimezoneOffset();
+      const tz = -new Date(dateString).getTimezoneOffset();
       const diff = tz >= 0 ? "+" : "-";
       dateString += `${diff}${pad(tz / 60)}:${pad(tz % 60)}`;
       setMeta("concert-date", dateString);
     }
+
+    const date = meta["concert-date"]
+      ? new Date(meta["concert-date"])
+      : new Date();
 
     return (
       <>
@@ -73,7 +77,7 @@ registerPlugin("concert-sidebar", {
         <PluginSidebar {...SIDEBAR}>
           <PanelBody title={__("Date and Time")} initialOpen={true}>
             <DateTimePicker
-              currentDate={meta["concert-date"]}
+              currentDate={date}
               onChange={setDate}
               is12Hour={false}
             />

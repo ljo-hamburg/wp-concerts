@@ -304,7 +304,7 @@ class ConcertPostType {
 			$dependencies = require dirname( __DIR__ ) . '/blocks/concert-meta.asset.php';
 			wp_register_script(
 				self::SCRIPT_HANDLE,
-				plugin_dir_url( __DIR__ ) . '/blocks/concert-meta.js',
+				plugins_url( 'blocks/concert-meta.js', __DIR__ ),
 				$dependencies['dependencies'],
 				$dependencies['version'],
 				true
