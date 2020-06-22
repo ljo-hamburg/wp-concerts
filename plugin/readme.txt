@@ -27,5 +27,18 @@ ICS file. Many existing calendar applications can simply subscribe to these cale
 including automatic updates.
 
 == Installation ==
-Installing the plugin is as simple as installing any other plugin. Just upload it to
-your site and click "activate".
+Installing the plugin is as simple as installing any other plugin:
+
+1. Download wp-concerts-<version>.zip from the [Releases](https://github.com/ljo-hamburg/wp-concerts/releases) section.
+2. Upload the zip file to your WordPress site.
+3. Activate the plugin.
+
+Note that this plugin requires the following dependencies to be installed in your
+environemnt:
+
+- At least PHP 7.4
+- The [intl](https://www.php.net/manual/de/intl.installation.php) extension.
+
+WP Concerts does not handle missing requirements particularly gracefully so you
+should make sure that both requirements are met **before** attempting to install
+the plugin.

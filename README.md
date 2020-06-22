@@ -9,6 +9,8 @@ A WordPress plugin to support concerts. Used by the [LJO Hamburg](https://ljo-ha
 
 Installing the plugin is as easy as with every other plugin. Download the latest release, upload it to your site and activate it. The plugin automatically updates itself from GitHub releases  via [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker).
 
+For more information such as requirements see the `plugin/readme.txt` file.
+
 ## Development
 
 ### Installing the Dependencies
