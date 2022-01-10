@@ -1,6 +1,6 @@
 {
   "name": "wp-concerts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Concerts for WordPress.",
   "scripts": {
     "clean": "rm -rf build/*",
