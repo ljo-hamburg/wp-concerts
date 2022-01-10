@@ -1,6 +1,6 @@
 const { src, dest, series, parallel, watch } = require("gulp");
 const sourcemaps = require("gulp-sourcemaps");
-const sass = require("gulp-sass");
+const sass = require("gulp-sass")(require("sass"));
 const postcss = require("gulp-postcss");
 const babel = require("gulp-babel");
 const gulpWebpack = require("webpack-stream");
@@ -21,7 +21,7 @@ const production = process.env.NODE_ENV === "production";
 const data = require("./package.json");
 const composer = require("./composer.json");
 
-sass.compiler = require("dart-sass");
+sass.compiler = require("sass");
 
 let BUILD_DIR = "build";
 if (argv.dest) {
@@ -146,7 +146,8 @@ function compileMoTranslations() {
 function compileJedTranslations() {
   return src("./languages/*.po").pipe(
     exec(
-      `./vendor/bin/wp i18n make-json --no-purge "<%= JSON.stringify(file.path) %>" ${BUILD_DIR}/languages/`
+      (file) =>
+        `./vendor/bin/wp i18n make-json --no-purge "${file.path}" ${BUILD_DIR}/languages/`
     )
   );
 }

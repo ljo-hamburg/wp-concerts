@@ -62,13 +62,8 @@ registerBlockType(BLOCK_NAME, {
         month: "short",
         day: "numeric",
       });
-      [
-        { value: day },
-        ,
-        { value: month },
-        ,
-        { value: year },
-      ] = dateTimeFormat.formatToParts(date);
+      [{ value: day }, , { value: month }, , { value: year }] =
+        dateTimeFormat.formatToParts(date);
     }
     const backgroundImageStyle = {};
     if (backgroundImage) {

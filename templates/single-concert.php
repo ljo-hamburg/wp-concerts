@@ -25,7 +25,7 @@ try {
 
 get_header();
 echo '<script type="application/ld+json">';
-echo wp_json_encode( $this->get_schema_data() );
+echo wp_json_encode( $concert->get_schema_data() );
 echo '</script>';
 ?>
 	<?php if ( $concert->cancelled ) : ?>
@@ -40,14 +40,18 @@ echo '</script>';
 		</div>
 		<div class="time">
 			<?php
-			echo esc_html(
-				sprintf(
+			if ( is_null( $concert->end_date() ) ) {
+				echo esc_html( $concert->date->format( 'H:i' ) );
+			} else {
+				echo esc_html(
+					sprintf(
 					// Translators: 1: Start Time, 2: End Time.
-					__( '%1$s – %2$s', 'wp-concerts' ),
-					$concert->date->format( 'H:i' ),
-					$concert->end_date()->format( 'H:i' )
-				)
-			);
+						__( '%1$s – %2$s', 'wp-concerts' ),
+						$concert->date->format( 'H:i' ),
+						$concert->end_date()->format( 'H:i' )
+					)
+				);
+			}
 			?>
 		</div>
 		<?php if ( $concert->organizer ) : ?>

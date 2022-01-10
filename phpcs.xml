@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <ruleset name="wp-concerts">
+    <!-- These are fixes for the WP Coding Standards 2.3.0 on PHP 8.1 -->
+    <config name="text_domain" value=""/>
+    <config name="prefixes" value="" />
+    <config name="minimum_supported_wp_version" value="" />
+
     <rule ref="WordPress">
         <!-- Do not enforce class-* style filenames for classes. -->
         <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />

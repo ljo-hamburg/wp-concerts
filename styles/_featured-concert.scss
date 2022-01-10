@@ -46,8 +46,8 @@ $editor: false !default;
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     padding: 45px 53px;
     white-space: nowrap;
     background-size: cover;
@@ -102,8 +102,8 @@ $editor: false !default;
   .content {
     display: flex;
     flex: 1;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     margin-left: 30px;
     @media (max-width: 992px) {
       flex-wrap: wrap;
