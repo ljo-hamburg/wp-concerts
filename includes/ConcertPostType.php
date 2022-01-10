@@ -342,7 +342,7 @@ class ConcertPostType {
 			$query->set( 'orderby', 'meta_value' );
 			$query->set( 'meta_key', self::DATE_META_KEY );
 			$query->set( 'order', 'ASC' );
-			if ( $query->get( 'all', false ) && ( ! is_admin() ) ) {
+			if ( ! ( $query->get( 'all', false ) || $query->is_admin ) ) {
 				$query->set(
 					'meta_query',
 					array(
