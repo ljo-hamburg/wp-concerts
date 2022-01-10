@@ -62,6 +62,9 @@ jobs:
           npm run build -- --dest=wp-concerts
           zip -qr9 $FILENAME wp-concerts
         env:
+          # For some reason the build fails without this. See
+          # https://stackoverflow.com/questions/69692842/error-message-error0308010cdigital-envelope-routinesunsupported
+          NODE_OPTIONS: --openssl-legacy-provider
           FILENAME: ${{ steps.version.outputs.filename }}
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v2
