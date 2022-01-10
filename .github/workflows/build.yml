@@ -57,7 +57,7 @@ jobs:
         run: |
           npm ci
           composer install
-      - name: Build Theme
+      - name: Build Plugin
         run: |
           npm run build -- --dest=wp-concerts
           zip -qr9 $FILENAME wp-concerts
